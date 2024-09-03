@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export const useGetSingleItem = ({ endpoint, id }) => {
     const [data, setData] = React.useState([])
@@ -52,3 +52,36 @@ export const useGetData = ({ endpoint, queryParamsObject }) => {
 
     return { data, error, loading: isLoading }
 }
+
+export function getProducts() {
+    const [data, setData] = React.useState([]);
+
+    const productsUrl = 'https://api.escuelajs.co/api/v1/products'; 
+
+    React.useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(productsUrl);
+                setData(response.data);
+            } catch (err) {
+                console.error(err.message);
+            }
+        };
+
+        fetchProduct();
+    }, []);
+
+    return data;
+}
+
+export async function PostUser(userData) {
+    const userUrl = 'https://api.escuelajs.co/api/v1/users/';
+  
+    try {
+      const response = await axios.post(userUrl, userData);
+      return response.data;
+    } catch (error) {
+      console.error('Error adding user:', error.message);
+      throw error;
+    }
+  }

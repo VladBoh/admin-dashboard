@@ -3,6 +3,7 @@ import React from 'react'
 import { useGetData } from '../../hooks/use-get-data'
 
 import { UsersTable } from './users-table'
+import { AddUserForm } from './add-user/add-user-form'
 
 export const Users = () => {
     const { data: users } = useGetData({ endpoint: '/users' })
@@ -10,18 +11,7 @@ export const Users = () => {
     return (
         <>
             <UsersTable users={users} />
-
-            {/* <div className='mt-10 flex flex-col gap-4'>
-                {users.map((user) => {
-                    return (
-                        <Link
-                            key={user.id}
-                            to={routes.users + '/' + user.id}>
-                            {user.name}
-                        </Link>
-                    )
-                })}
-            </div> */}
+            <AddUserForm/>
         </>
     )
 }

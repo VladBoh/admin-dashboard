@@ -5,8 +5,11 @@ import { ErrorPage } from '../pages/error-page'
 import { HomePage } from '../pages/home-page'
 import { UserPage } from '../pages/user-page'
 import { UsersPage } from '../pages/users-page'
+import { ProductsPage } from '../pages/products-page'
+import { LoginPage } from '../pages/login-page'
 
 import { Layout } from './layout'
+
 
 export const App = () => {
     const router = createBrowserRouter([
@@ -26,6 +29,14 @@ export const App = () => {
                 {
                     path: routes.user,
                     element: <UserPage />
+                },
+                {
+                    path: routes.products,
+                    element: <ProductsPage />
+                },
+                {
+                    path: routes.login,
+                    element: <LoginPage/>
                 }
             ]
         },
